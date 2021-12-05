@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MonarchDB", "MonarchDB\MonarchDB.sqlproj", "{8D9267D3-E89E-4A09-8C62-17A76972ECCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonarchDAL", "MonarchDAL\MonarchDAL.csproj", "{9349E3CA-E8EA-48E8-897A-36A09D39C02F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonarchDAL", "MonarchDAL\MonarchDAL.csproj", "{9349E3CA-E8EA-48E8-897A-36A09D39C02F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBTest", "DBTest\DBTest.csproj", "{469EC4D3-5145-43A8-A12B-9218AE89E38B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{9349E3CA-E8EA-48E8-897A-36A09D39C02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9349E3CA-E8EA-48E8-897A-36A09D39C02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9349E3CA-E8EA-48E8-897A-36A09D39C02F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{469EC4D3-5145-43A8-A12B-9218AE89E38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{469EC4D3-5145-43A8-A12B-9218AE89E38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{469EC4D3-5145-43A8-A12B-9218AE89E38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{469EC4D3-5145-43A8-A12B-9218AE89E38B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
