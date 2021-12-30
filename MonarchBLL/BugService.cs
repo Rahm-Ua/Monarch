@@ -8,7 +8,7 @@ using log4net;
 
 namespace MonarchBLL
 {
-    public class BugService
+    public class BugService : IBugService
     {
         private DataAccess dataAccess;
         private static readonly ILog log = LogManager.GetLogger(typeof(BugService));
@@ -54,7 +54,7 @@ namespace MonarchBLL
             }
         }
 
-        public int AddBug(BugModel bug)
+        public int? AddBug(BugModel bug)
         {
             try
             {
@@ -63,7 +63,6 @@ namespace MonarchBLL
             catch (SqlException e)
             {
                 log.Error("Error in adding bug", e);
-                //What is the right thing to do in this situation?//
                 return null;
             }
         }

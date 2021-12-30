@@ -115,8 +115,8 @@ namespace MonarchDAL
             {
                 con.Open();
 
-                string sql = "INSERT INTO Item(LineNumber, Title, Severity, CatigoryId, Description, Status, ResolutionId)" +
-                       " VALUES(@LineNumber, @Title, @Severity, @CatigoryId, @Description, @Status, @ResolutionId)";
+                string sql = "INSERT INTO Item(LineNumber, Title, Severity, CategoryId, Description, Status, ResolutionId)" +
+                       " VALUES(@LineNumber, @Title, @Severity, @CategoryId, @Description, @Status, @ResolutionId)";
 
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
@@ -140,7 +140,7 @@ namespace MonarchDAL
             {
                 con.Open();
 
-                string sql = "Update Item set LineNumber=@LineNumber, Title=@Title, Severity=@Severity, CatigoryId=@CatigoryId, Description=@Description, Status=@Status," +
+                string sql = "Update Item set LineNumber=@LineNumber, Title=@Title, Severity=@Severity, CategoryId=@CategoryId, Description=@Description, Status=@Status," +
                     " ResolutionId=@ResolutionId, ModifiedDate=@ModifiedDate WHERE Id=@Id";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
