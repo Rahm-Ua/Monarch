@@ -52,7 +52,7 @@ namespace MonarchDAL
                     " FROM Item i " +
                     " inner join Category c on c.Id = CategoryId" +
                     " inner join Resolution r on r.Id = ResolutionId" +
-                    $" where Id = {Id}"
+                    $" where i.Id = {Id}"
 
                     , con))
                 {
@@ -70,24 +70,20 @@ namespace MonarchDAL
             return null;
         }
 
-        public void DeleteBug(int Id)
+        public int DeleteBug(int Id)
         {
-            try
+
+            int rc = 0;
+            using (SqlConnection con = new(ConnectionString))
             {
-                using (SqlConnection con = new(ConnectionString))
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand($"DELETE FROM Item WHERE Id = {Id}", con))
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand($"DELETE FROM Item WHERE Id = {Id}", con))
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-                    con.Close();
+                    rc = cmd.ExecuteNonQuery();
                 }
+                con.Close();
             }
-            catch (SystemException ex)
-            {
-                Console.WriteLine($"An error occurred: {0}", ex.Message);
-            }
+            return rc;
         }
 
         private BugModel Populate(SqlDataReader reader)
@@ -116,7 +112,8 @@ namespace MonarchDAL
                 con.Open();
 
                 string sql = "INSERT INTO Item(LineNumber, Title, Severity, CategoryId, Description, Status, ResolutionId)" +
-                       " VALUES(@LineNumber, @Title, @Severity, @CategoryId, @Description, @Status, @ResolutionId)";
+                       " VALUES(@LineNumber, @Title, @Severity, @CategoryId, @Description, @Status, @ResolutionId);" +
+                       "SELECT CAST(SCOPE_IDENTITY() as int);";
 
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

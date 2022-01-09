@@ -42,15 +42,16 @@ namespace MonarchBLL
                 return null;
             }
         }
-        public void DeleteBug(int Id)
+        public int? DeleteBug(int Id)
         {
             try
             {
-                dataAccess.DeleteBug(Id);
+               return dataAccess.DeleteBug(Id);
             }
             catch (SqlException e)
             {
                 log.Error("Error in deleting bug", e);
+                return null;
             }
         }
 
