@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonarchDAL.Models
+
+namespace MonarchDOL.Models
 {
     public class BugModel
     {

@@ -1,7 +1,7 @@
 using MonarchBLL;
-using MonarchDAL.Models;
+using MonarchDOL;
+using MonarchDOL.Models;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 
 namespace MonarchTest
@@ -14,7 +14,7 @@ namespace MonarchTest
         [SetUp]
         public void Setup()
         {
-            service = new BugService();
+         //  service = new BugService();
         }
 
         [Test]

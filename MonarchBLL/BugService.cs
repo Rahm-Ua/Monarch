@@ -2,19 +2,22 @@
 using MonarchDAL;
 using System.Data;
 using System.Collections.Generic;
-using MonarchDAL.Models;
+using MonarchDOL.Models;
 using System.Data.SqlClient;
-using log4net;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace MonarchBLL
 {
     public class BugService : IBugService
     {
         private DataAccess dataAccess;
-        private static readonly ILog log = LogManager.GetLogger(typeof(BugService));
-        public BugService()
+        private readonly ILogger<BugService> _logger;
+        public BugService(IConfiguration configuration, ILogger<BugService> logger)
         {
-            dataAccess = new DataAccess("Data Source = (localdb)\\ProjectsV13; Initial Catalog = MonarchDB; Integrated Security = True; Connect Timeout = 30; Encrypt = False;");
+            string cs = configuration.GetConnectionString("DefaultConnection");
+            dataAccess = new DataAccess(cs);
+            _logger = logger;
         }
 
         public List<BugModel> GetBugs()
@@ -25,7 +28,7 @@ namespace MonarchBLL
             }
             catch (SqlException e)
             {
-                log.Error("Error in getting bug list", e);
+                _logger.LogError("Error in getting bug list", e);
                 return null;
             }
         }
@@ -38,7 +41,7 @@ namespace MonarchBLL
             }
             catch (SqlException e)
             {
-                log.Error("Error in getting bug", e);
+                _logger.LogError("Error in getting bug", e);
                 return null;
             }
         }
@@ -50,7 +53,7 @@ namespace MonarchBLL
             }
             catch (SqlException e)
             {
-                log.Error("Error in deleting bug", e);
+                _logger.LogError("Error in deleting bug", e);
                 return null;
             }
         }
@@ -63,7 +66,7 @@ namespace MonarchBLL
             }
             catch (SqlException e)
             {
-                log.Error("Error in adding bug", e);
+                _logger.LogError("Error in adding bug", e);
                 return null;
             }
         }
@@ -76,7 +79,7 @@ namespace MonarchBLL
             }
             catch (SqlException e)
             {
-                log.Error("Error in updtaing bug", e);
+                _logger.LogError("Error in updtaing bug", e);
             }
         }
     }
