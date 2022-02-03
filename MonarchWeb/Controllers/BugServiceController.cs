@@ -2,9 +2,6 @@
 using Microsoft.Extensions.Logging;
 using MonarchBLL;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MonarchWeb.Controllers
 {
@@ -21,9 +18,27 @@ namespace MonarchWeb.Controllers
 
         [HttpGet]
         public IActionResult Index()
+
         {
             var bugs = service.GetBugs();
             return View(bugs);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                if (service.DeleteBug(id) == 1)
+                {
+                    return Ok();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

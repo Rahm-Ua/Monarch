@@ -1,11 +1,9 @@
-﻿using System;
-using MonarchDAL;
-using System.Data;
-using System.Collections.Generic;
-using MonarchDOL.Models;
-using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MonarchDAL;
+using MonarchDOL.Models;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace MonarchBLL
 {
@@ -49,12 +47,13 @@ namespace MonarchBLL
         {
             try
             {
-               return dataAccess.DeleteBug(Id);
+                //return dataAccess.DeleteBug(Id);
+                return 1;
             }
             catch (SqlException e)
             {
                 _logger.LogError("Error in deleting bug", e);
-                return null;
+                throw;
             }
         }
 

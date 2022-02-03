@@ -101,8 +101,8 @@ namespace MonarchDAL
             model.ResolutionId = reader.GetInt32(7);
             model.CreatedDate = reader.GetDateTime(8);
             model.ModifiedDate = reader.IsDBNull(9) ? null : reader.GetDateTime(9);
-            model.CategoryName = reader.GetString(10);
-            model.ResolutionName = reader.GetString(11);
+            model.ResolutionName = reader.GetString(10);
+            model.CategoryName = reader.GetString(11);
             return model;
         }
 
